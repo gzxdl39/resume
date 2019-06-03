@@ -1,0 +1,84 @@
+{include file="public/header" /}
+    <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/index/update" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="display: none" colspan="4"><input type="text" name="id" id="id" value="{$res.id}"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>账号：</th>
+                                <td><input class="common-text" name="name" id="name" size="50"  type="text" value="{$res.name}"></td>
+                                <th><i class="require-red"></i>密码：</th>
+                                <td><input class="common-text" name="password" id="password" size="50"  type="password" value="{$res.password}"></td>
+                            </tr>
+                            <tr>
+                                <th width="80"><i class="require-red"></i>姓名：</th>
+                                <td><input class="common-text required" id="title" name="title" size="50" type="text" value="{$res.title}"></td>
+                                <th width="80"><i class="require-red"></i>年龄：</th>
+                                <td><input class="common-text required" id="age" name="age" size="50" type="text" value="{$res.age}"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>性别：</th>
+                                <td><input class="common-text" name="sex" id="sex" size="50"  type="text" value="{$res.sex}"></td>
+                                <th><i class="require-red"></i>职业：</th>
+                                <td><input class="common-text" name="occupation" id="occupation" size="50"  type="text" value="{$res.occupation}"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>民族：</th>
+                                <td><input class="common-text" name="nation" id="nation" size="50"  type="text" value="{$res.nation}"></td>
+                                <th><i class="require-red"></i>邮箱：</th>
+                                <td><input class="common-text" name="mail" id="mail" size="50"  type="text" value="{$res.mail}"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>联系方式：</th>
+                                <td><input class="common-text" name="tel" id="tel" size="50"  type="text" value="{$res.tel}"></td>
+                                <th><i class="require-red"></i>微信号：</th>
+                                <td><input class="common-text" name="weixin" id="weixin" size="50"  type="text" value="{$res.weixin}"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>所在地：</th>
+                                <td><input class="common-text" name="location" id="location" size="50"  type="text" value="{$res.location}"></td>
+                                <th><i class="require-red"></i>籍贯：</th>
+                                <td><input class="common-text" name="native" id="native" size="50"  type="text" value="{$res.native}"></td>
+                            </tr>
+                            <tr>
+                                <th>兴趣爱好：</th>
+                                <td><input type="text" class="common-text" name="hobby" id="hobby" size="50" placeholder="请使用'/'进行分隔" value="{$res.hobby}"></td>
+                                <th>生日：</th>
+                                <td><input type="text" class="common-text" name="birthday" id="birthday" size="50" value="{$res.birthday}"></td>
+                            </tr>
+                            <tr>
+                                <th>教育背景：</th>
+                                <td><input class="common-text" name="schooltime" id="schooltime" size="50"  type="text" placeholder="毕业时间" value="{$res.schooltime}"></td>
+                                <td><input class="common-text" type="text" name="degree" id="degree" size="5" placeholder="学历" value="{$res.degree}"></td>
+                                <td><input class="common-text" name="school" id="school" size="50"  type="text" placeholder="毕业院校名称" value="{$res.school}"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red"></i>头像：</th>
+                                <td colspan="3"><input name="head" id="head" type="file"></td>
+                            </tr>
+                            <tr>
+                                <th>个人介绍：</th>
+                                <td colspan="3"><textarea name="introduction" class="common-textarea" id="introduction" cols="30" style="width: 82%;" rows="5"></textarea></td>  
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#introduction").val('{$res.introduction}'); 
+    </script>
+    <!--/main-->
