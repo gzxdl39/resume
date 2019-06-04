@@ -92,14 +92,64 @@ class Index extends Common
             }
         }
     }
-
+    // 工作经历
     public function work()
     {
-        return $this->fetch('index/work');
+        $skills = Db::name('skills')->select();
+        $work = Db::name('work')->select();
+        $project = Db::name('project')->select();
+        if($skills || $work || $project){
+            $this->assign('skills',$skills);
+            $this->assign('work',$work);
+            $this->assign('project',$project);
+            return $this->fetch('index/work');
+        }else{
+            return $this->error('系统发生错误，请联系维护人员','/index/index');
+        }
     }
-
-    public function work_add()
+    // 个人技能
+    public function skills()
     {
-        dump($_POST);
+        return $this->fetch('index/skills');
+    }
+    // 就职公司
+    public function workname()
+    {
+        return $this->fetch('index/workname');
+    }
+    // 项目经历
+    public function project()
+    {
+        return $this->fetch('index/project');
+    }
+    // 个人技能添加
+    public function skills_add()
+    {
+        $res = Db::name('skills')->insert($_POST);
+        if($res){
+            return $this->success('添加成功','/index/work');
+        }else{
+            return $this->error('添加失败','index/skills');
+        }
+    }
+    // 就职公司添加
+    public function workname_add()
+    {
+        $res = Db::name('work')->insert($_POST);
+        if($res){
+            return $this->success('添加成功','/index/work');
+        }else{
+            return $this->error('添加失败','index/workname');
+        }
+    }
+    // 项目经历添加
+    public function project_add()
+    {
+        $res = Db::name('project')->insert($_POST);
+        if($res){
+            return $this->success('添加成功','/index/work');
+        }else{
+            return $this->error('添加失败','index/project');
+        }
     }
 }

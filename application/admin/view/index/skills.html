@@ -1,0 +1,35 @@
+{include file="public/header" /}
+    <!--/sidebar-->
+    <div class="main-wrap">
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/index/skillsadd" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="80%">
+                        <tbody>
+                            <tr>
+                                <th width="80">职业技能：</th>
+                                <td><input class="common-text" name="skills" id="skills" size="50"  type="text" placeholder="请使用逗号进行分隔"></td>
+                                <th width="80">熟练度</th>
+                                <td>                                
+                                    <select name="proficiency" id="proficiency" class="required">
+                                        <option value="">请选择</option>
+                                        <option value="1">了解</option>
+                                        <option value="2">掌握</option>
+                                        <option value="3">熟练</option>
+                                        <option value="4">精通</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/main-->

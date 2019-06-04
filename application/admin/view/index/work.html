@@ -6,12 +6,24 @@
                 <form action="/index/workadd" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
+                            {foreach name="skills" item="vo"}
                             <tr>
+                                <td style="display: none" colspan="4"><input type="text" name="id" id="id" value="{$vo.sid}"></td>
                                 <th width="80">职业技能：</th>
-                                <td><input class="common-text" name="skills" id="skills" size="50"  type="text" placeholder="请使用逗号进行分隔"></td>
+                                <td><input class="common-text" name="skills" id="skills" size="50"  type="text" placeholder="请使用逗号进行分隔" value="{$vo.skills}"></td>
                                 <th width="80">熟练度</th>
                                 <td>                                
-                                    <select name="proficiency" id="proficiency" class="required">
+                                    <select name="proficiency" id="proficiency" class="required" value="{$vo.proficiency}">
+                                        {if condition="$vo.proficiency eq 1 "}
+                                        <option value="1" selected>了解</option>
+                                        {elseif condition="$vo.proficiency eq 2 "}
+                                        <option value="2">掌握</option>
+                                        {elseif condition="$vo.proficiency eq 3 "}
+                                        <option value="3">熟练</option>
+                                        {elseif condition="$vo.proficiency eq 4 "}
+                                        <option value="4">精通</option>
+                                        {/else}
+                                        {/if}
                                         <option value="">请选择</option>
                                         <option value="1">了解</option>
                                         <option value="2">掌握</option>
@@ -19,31 +31,47 @@
                                         <option value="4">精通</option>
                                     </select>
                                 </td>
+                                <td><a href="javascript:(void)" class="btn btn-primary btn6 mr10">删除</a></td>
                             </tr>
+                            {/foreach}
+                            {foreach name="work" item="io"}
                             <tr>
+                                <td style="display: none" colspan="4"><input type="text" name="id" id="id" value="{$io.wid}"></td>
                                 <th>工作经历：</th>
-                                <td><input class="common-text" name="name" id="name" size="50"  type="text" placeholder="公司名称"></td>
-                                <td><input class="common-text" name="position" id="position" size="5  type="text" placeholder="职位"></td>
-                                <td><input class="common-text" name="worktime" id="worktime" size="50"  type="text" placeholder="工作时间度"></td>
+                                <td><input class="common-text" name="name" id="name" size="50"  type="text" placeholder="公司名称" value="{$io.name}"></td>
+                                <td><input class="common-text" name="position" id="position" size="5  type="text" placeholder="职位" value="{$io.position}"></td>
+                                <td><input class="common-text" name="worktime" id="worktime" size="50"  type="text" placeholder="工作时间度" value="{$io.worktime}"></td>
+                                <td rowspan="2"><a href="javascript:(void)" class="btn btn-primary btn6 mr10">删除</a></td>
                             </tr>
                             <tr>
                                 <th>工作内容：</th>
                                 <td colspan="3"><textarea name="workcontent" class="common-textarea" id="workcontent" cols="20" style="width: 82%;" rows="10"></textarea></td>
+                                <script type="text/javascript">
+                                    $("#workcontent").val('{$io.workcontent}'); 
+                                </script>
                             </tr>
+                            {/foreach}
+                            {foreach name="project" item="bo"}
                             <tr>
+                                <td style="display: none" colspan="4"><input type="text" name="id" id="id" value="{$bo.pid}"></td>
                                 <th>项目名称：</th>
-                                <td><input class="common-text" name="projectname" id="projectname" size="50"  type="text" placeholder="项目名称"></td>
+                                <td><input class="common-text" name="projectname" id="projectname" size="50"  type="text" placeholder="项目名称" value="{$bo.projectname}"></td>
                                 <th>项目时间：</th>
-                                <td><input class="common-text" name="projecttime" id="projecttime" size="50"  type="text" placeholder="项目时间"></td>
+                                <td><input class="common-text" name="projecttime" id="projecttime" size="50"  type="text" placeholder="项目时间" value="{$bo.projecttime}"></td>
+                                <td rowspan="2"><a href="javascript:(void)" class="btn btn-primary btn6 mr10">删除</a></td>
                             </tr>
                             <tr>
                                 <th>项目内容：</th>
                                 <td colspan="3"><textarea name="projectcentent" class="common-textarea" id="projectcentent" cols="20" style="width: 82%;" rows="10"></textarea></td>
                             </tr>
+                                <script type="text/javascript">
+                                    $("#projectcentent").val('{$bo.projectcentent}'); 
+                                </script>
+                            {/foreach}
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <!-- <input class="btn btn-primary btn6 mr10" value="提交" type="submit"> -->
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>

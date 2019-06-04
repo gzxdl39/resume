@@ -40,4 +40,17 @@ Route::rule('/index/update','admin/index/update');
 //工作经历
 Route::rule('/index/work','admin/index/work');
 //新增工作经历
-Route::rule('/index/workadd','admin/index/work_add');
+// Route::rule('/index/workadd','admin/index/work_add');
+
+//个人技能
+Route::rule('/index/skills','admin/index/skills');
+//就职公司
+Route::rule('/index/workname','admin/index/workname');
+//项目经历
+Route::rule('/index/project','admin/index/project');
+//个人技能
+Route::rule('/index/skillsadd','admin/index/skills_add');
+//就职公司
+Route::rule('/index/worknameadd','admin/index/workname_add');
+//项目经历
+Route::rule('/index/projectadd','admin/index/project_add');
