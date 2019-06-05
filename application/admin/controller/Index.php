@@ -152,4 +152,83 @@ class Index extends Common
             return $this->error('添加失败','index/project');
         }
     }
+    //个人技能修改页
+    public function skills_edit($sid)
+    {
+        $res = Db::name('skills')->where('sid',$sid)->find();
+        $this->assign('res',$res);
+        return $this->fetch('index/skillsedit');
+    }
+    // 个人公司名称修改页
+    public function workname_edit($wid)
+    {
+        $res = Db::name('work')->where('wid',$wid)->find();
+        $this->assign('res',$res);
+        return $this->fetch('index/worknameedit');
+    }
+    // 个人项目修改页
+    public function project_edit($pid)
+    {
+        $res = Db::name('project')->where('pid',$pid)->find();
+        $this->assign('res',$res);
+        return $this->fetch('index/projectedit');
+    }
+    //个人技能修改操作
+    public function skills_up($sid)
+    {
+        $res = Db::name('skills')->where('sid',$sid)->update($_POST);
+        if($res){
+            return $this->success('修改成功','/index/work');
+        }else{
+            return $this->error('修改失败','/index/work');
+        }
+    }
+    // 个人公司名称修改操作
+    public function work_up($wid)
+    {
+        $res = Db::name('skills')->where('wid',$wid)->update($_POST);
+        if($res){
+            return $this->success('修改成功','/index/work');
+        }else{
+            $this->assign('res',$res);
+            return $this->error('修改失败','/index/work');
+        }
+    }
+    // 个人项目修改操作
+    public function project_up($pid)
+    {
+        $res = Db::name('skills')->where('pid',$pid)->update($_POST);
+        if($res){
+            return $this->success('修改成功','/index/work');
+        }else{
+            return $this->error('修改失败','/index/work');
+        }
+    }
+    // 个人技能删除
+    public function skills_delete(){
+        $res = Db::name('skills')->where('sid',$_POST['sid'])->delete();
+        if($res){
+            return '1';
+        }else{
+            return '0';
+        }
+    }
+    // 就职公司删除
+    public function work_delete(){
+        $res = Db::name('work')->where('wid',$_POST['wid'])->delete();
+        if($res){
+            return '1';
+        }else{
+            return '0';
+        }
+    }
+    // 项目经历删除
+    public function project_delete(){
+        $res = Db::name('project')->where('pid',$_POST['pid'])->delete();
+        if($res){
+            return '1';
+        }else{
+            return '0';
+        }
+    }
 }

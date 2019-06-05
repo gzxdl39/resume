@@ -9,9 +9,9 @@
                             {foreach name="skills" item="vo"}
                             <tr>
                                 <td style="display: none" colspan="4"><input type="text" name="id" id="id" value="{$vo.sid}"></td>
-                                <th width="80">职业技能：</th>
+                                <th width="90">职业技能：</th>
                                 <td><input class="common-text" name="skills" id="skills" size="50"  type="text" placeholder="请使用逗号进行分隔" value="{$vo.skills}"></td>
-                                <th width="80">熟练度</th>
+                                <th width="90">熟练度</th>
                                 <td>                                
                                     <select name="proficiency" id="proficiency" class="required" value="{$vo.proficiency}">
                                         {if condition="$vo.proficiency eq 1 "}
@@ -31,7 +31,8 @@
                                         <option value="4">精通</option>
                                     </select>
                                 </td>
-                                <td><a href="javascript:(void)" class="btn btn-primary btn6 mr10">删除</a></td>
+                                <td width="90"><a href="javascript:(void)" id="{$vo.sid}" class="btn btn-warning btn4 mr10" onclick="skills(this.id)">删除</a></td>
+                                <td><a href="/index/skillsedit?sid={$vo.sid}" class="btn btn-primary btn4 mr10" id="{$vo.sid}">修改</a></td>
                             </tr>
                             {/foreach}
                             {foreach name="work" item="io"}
@@ -39,16 +40,14 @@
                                 <td style="display: none" colspan="4"><input type="text" name="id" id="id" value="{$io.wid}"></td>
                                 <th>工作经历：</th>
                                 <td><input class="common-text" name="name" id="name" size="50"  type="text" placeholder="公司名称" value="{$io.name}"></td>
-                                <td><input class="common-text" name="position" id="position" size="5  type="text" placeholder="职位" value="{$io.position}"></td>
+                                <td><input class="common-text" name="position" id="position" size="6"  type="text" placeholder="职位" value="{$io.position}"></td>
                                 <td><input class="common-text" name="worktime" id="worktime" size="50"  type="text" placeholder="工作时间度" value="{$io.worktime}"></td>
-                                <td rowspan="2"><a href="javascript:(void)" class="btn btn-primary btn6 mr10">删除</a></td>
+                                <td rowspan="2"><a href="javascript:(void)" class="btn btn-warning btn4 mr10" id="{$io.wid}" onclick="work(this.id)">删除</a></td>
+                                <td rowspan="2"><a href="/index/worknameedit?wid={$io.wid}" class="btn btn-primary btn4 mr10" id="{$io.wid}">修改</a></td>
                             </tr>
                             <tr>
                                 <th>工作内容：</th>
-                                <td colspan="3"><textarea name="workcontent" class="common-textarea" id="workcontent" cols="20" style="width: 82%;" rows="10"></textarea></td>
-                                <script type="text/javascript">
-                                    $("#workcontent").val('{$io.workcontent}'); 
-                                </script>
+                                <td colspan="3"><p>{$io.workcontent}</p></td>
                             </tr>
                             {/foreach}
                             {foreach name="project" item="bo"}
@@ -58,15 +57,13 @@
                                 <td><input class="common-text" name="projectname" id="projectname" size="50"  type="text" placeholder="项目名称" value="{$bo.projectname}"></td>
                                 <th>项目时间：</th>
                                 <td><input class="common-text" name="projecttime" id="projecttime" size="50"  type="text" placeholder="项目时间" value="{$bo.projecttime}"></td>
-                                <td rowspan="2"><a href="javascript:(void)" class="btn btn-primary btn6 mr10">删除</a></td>
+                                <td rowspan="2"><a href="javascript:(void)" class="btn btn-warning btn4 mr10" id="{$bo.pid}" onclick="project(this.id)">删除</a></td>
+                                <td rowspan="2"><a href="/index/projectedit?pid={$bo.pid}" class="btn btn-primary btn4 mr10" id="{$bo.pid}">修改</a></td>
                             </tr>
                             <tr>
                                 <th>项目内容：</th>
-                                <td colspan="3"><textarea name="projectcentent" class="common-textarea" id="projectcentent" cols="20" style="width: 82%;" rows="10"></textarea></td>
+                                <td colspan="3"><p>{$bo.projectcentent}</p></td>
                             </tr>
-                                <script type="text/javascript">
-                                    $("#projectcentent").val('{$bo.projectcentent}'); 
-                                </script>
                             {/foreach}
                             <tr>
                                 <th></th>
@@ -81,3 +78,73 @@
         </div>
     </div>
     <!--/main-->
+<script type="text/javascript">
+    function skills(value){
+        if(confirm('确定要删除吗？')){
+            $.ajax({
+                type:"POST",
+                url: "/index/skillsde",
+                data: {sid:value},
+                success: function(data){
+                    if(data == 1){
+                        window.location.reload();
+                    }else{
+                        if(confirm('删除失败')){
+                            window.location.reload();
+                        }else{
+                            window.location.reload();
+                        }
+                    }
+                }
+            })
+        }else{
+            return false;
+        }   
+    }
+
+    function work(value){
+        if(confirm('确定要删除吗？')){
+            $.ajax({
+                type:"POST",
+                url: "/index/workde",
+                data: {wid:value},
+                success: function(data){
+                    if(data == 1){
+                        window.location.reload();
+                    }else{
+                        if(confirm('删除失败')){
+                            window.location.reload();
+                        }else{
+                            window.location.reload();
+                        }
+                    }
+                }
+            })
+        }else{
+            return false;
+        }   
+    }
+
+    function project(value){
+        if(confirm('确定要删除吗？')){
+            $.ajax({
+                type:"POST",
+                url: "/index/projectde",
+                data: {pid:value},
+                success: function(data){
+                    if(data == 1){
+                        window.location.reload();
+                    }else{
+                        if(confirm('删除失败')){
+                            window.location.reload();
+                        }else{
+                            window.location.reload();
+                        }
+                    }
+                }
+            })
+        }else{
+            return false;
+        }   
+    }
+</script>
