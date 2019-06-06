@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="/home/js/jquery.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/home/css/bootstrap.min.css">	
+	<link rel="stylesheet" type="text/css" href="/home/css/index.css">
+</head>
+<style type="text/css" media="screen">
+	
+</style>
+<body>
+	<div class="top">
+		{foreach name="admin" item="vo"}
+		<!-- 第一级 -->
+		<div class="one">
+			<div class="img">
+				{if condition="$vo.head neq '' "}
+				<img src="{$vo.head}" alt="" width="110" height="150">
+				{elseif condition="$vo.head eq '' "}
+				<img src="/home/images/touxiang.jpg" alt="" width="110" height="150">
+				{/if}
+			</div>
+			<div class="name">
+				{$vo.title}
+			</div>
+			<div class="intro">
+				<ul>
+					{if condition="$vo.occupation neq '' "}
+					<li><span>职业：</span>{$vo.occupation}</li>
+					{/if}
+					{if condition="$vo.tel neq '' "}
+					<li><span>联系方式：</span>{$vo.tel}</li>
+					{/if}
+					{if condition="$vo.mail neq '' "}
+					<li><span>邮箱地址：</span>{$vo.mail}</li>
+					{/if}
+					{if condition="$vo.weixin neq '' "}
+					<li><span>微信：</span>{$vo.weixin}</li>
+					{/if}
+				</ul>
+			</div>
+		</div>
+		<!-- 第二级 -->
+		<div class="ge">
+			<img src="/home/images/jiben.png" alt="" width="900">
+		</div>
+		<div>
+			<ul>
+				{if condition="$vo.sex neq '' "}
+				<li><span>性别：</span>{$vo.sex}</li>
+				{/if}
+				{if condition="$vo.age neq '' "}
+				<li><span>年龄：</span>{$vo.age}</li>
+				{/if}
+				{if condition="$vo.location neq '' "}
+				<li><span>所在地：</span>{$vo.location}</li>
+				{/if}
+				{if condition="$vo.native neq '' "}
+				<li><span>籍贯：</span>{$vo.native}</li>
+				{/if}
+				{if condition="$vo.nation neq '' "}
+				<li><span>民族：</span>{$vo.nation}</li>
+				{/if}
+				{if condition="$vo.birthday neq '' "}
+				<li><span>生日：</span>{$vo.birthday}</li>
+				{/if}
+			</ul>			
+		</div>
+		{/foreach}
+		<!-- 第三级 -->
+		<div class="ge">
+			<img src="/home/images/work.png" alt="" width="900">
+		</div>
+		{foreach name="work" item="wo"}
+		<div class="three">
+			<div class="d">
+				<span class="left">{$wo.name}</span>	
+			</div>
+			<div class="b">
+				<span class="right">{$wo.worktime}</span>
+			</div>
+			<div>
+				<p>{$wo.position}</p>
+			</div>
+			<div>
+				<p>{$wo.workcontent}</p>
+			</div>
+		</div>
+		{/foreach}
+		<!-- 第四级 -->
+		<div class="ge">
+			<img src="/home/images/project.png" alt="" width="900">
+		</div>
+		{foreach name="project" item="po"}
+		<div class="three">
+			<div class="d">
+				<span class="left">{$po.projectname}</span>
+			</div>
+			<div class="b">
+				<span class="right">{$po.projecttime}</span>
+			</div>
+			<div>
+				<p>{$po.projectcentent}</p>
+			</div>
+		</div>
+		{/foreach}
+		<!-- 第五级 -->
+		<div class="ge">
+			<img src="/home/images/school.png" alt="" width="900">
+		</div>
+		<div class="three">
+		{foreach name="admin" item="io"}
+			<div class="d">
+				<span class="left">{$io.school}</span>
+			</div>
+			<div class="b">
+				<span class="right">{$io.schooltime}</span>
+			</div>
+			<div>
+				<p>{$io.degree}</p>
+			</div>
+		{/foreach}
+		</div>
+		<!-- 第六级 -->
+		<div class="ge">
+			<img src="/home/images/skills.png" alt="" width="900">
+		</div>
+		<div>
+			<ul>
+				{foreach name="skills" item="so"}
+				<li>
+					<div>
+						<div class="skills">{$so.skills}</div>
+						<div class="btn btn-primary">
+                            {if condition="$so.proficiency eq 1 "}
+                            了解
+                            {elseif condition="$so.proficiency eq 2 "}
+                            掌握
+                            {elseif condition="$so.proficiency eq 3 "}
+                            熟练
+                            {elseif condition="$so.proficiency eq 4 "}
+                            精通
+                            {/else}
+                            {/if}
+						</div>
+					</div>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+
+		<!-- 第七级 -->
+		{foreach name="admin" item="ho"}
+		<div class="ge">
+			<img src="/home/images/hobby.png" alt="" width="900">
+		</div>
+		<div class="three">
+			<p class="hobby">{$io.hobby}</p>
+		</div>
+		<!-- 第八级 -->
+		<div class="ge">
+			<img src="/home/images/geren.png" alt="" width="900">
+		</div>
+		<div class="three">
+			<p class="syn">{$io.introduction}</p>
+		</div>
+		{/foreach}
+	</div>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>
+

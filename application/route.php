@@ -75,3 +75,5 @@ Route::rule('/index/skillsde','admin/index/skills_delete');
 Route::rule('/index/projectde','admin/index/project_delete');
 //就职公司删除
 Route::rule('/index/workde','admin/index/work_delete');
+
+Route::rule('/','home/index/index');
